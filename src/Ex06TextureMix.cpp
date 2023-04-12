@@ -115,7 +115,7 @@ void Ex06TextureMix::Update(float InDeltaTime)
     static float ElapsedTime = 0;
     ElapsedTime += InDeltaTime;
 
-    Color TimeColor;
+    //Color TimeColor;
     //TimeColor.r = sinf(ElapsedTime) * 0.5f + 0.5f;
     //TimeColor.g = cosf(ElapsedTime) * 0.5f + 0.5f;
     //TimeColor.b = cosf(ElapsedTime + 1.1f) * 0.5f + 0.5f;
@@ -125,16 +125,16 @@ void Ex06TextureMix::Update(float InDeltaTime)
   
     GLint scalarID = glGetUniformLocation(Program->ID(), "mixScalar");
     applicationTime += InDeltaTime;
-    float test = abs( sin(applicationTime));
+    float scalar = abs( sin(applicationTime));
     std::cout<<"Delta "<<InDeltaTime<<std::endl;
     std::cout<<"App time "<<applicationTime<<std::endl;
     
 
-    std::cout<<"calculated sine " <<test<<std::endl;
-    glUniform1fv(scalarID,1,&test);
+    std::cout<<"calculated sine " <<scalar<<std::endl;
+    glUniform1fv(scalarID,1,&scalar);
 
 
-    glUniform4fv(glGetUniformLocation(Program->ID(), "base_color"), 1, (GLfloat*)&TimeColor);
+    //glUniform4fv(glGetUniformLocation(Program->ID(), "base_color"), 1, (GLfloat*)&TimeColor);
 }
 
 void Ex06TextureMix::Destroy()
